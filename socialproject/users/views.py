@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from .forms import LoginForm
 
@@ -18,3 +18,7 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'users/login.html', {'form':form})
+
+def user_logout(request):
+    logout(request)
+    return render(request, 'users/logout.html')
